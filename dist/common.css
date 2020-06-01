@@ -1,0 +1,11 @@
+body {
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: bold;
+  display: inline;
+}
+
+div {
+  display: -ms-grid;
+  display: grid;
+}
