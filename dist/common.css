@@ -3,6 +3,8 @@ body {
   font-size: 1.4rem;
   font-weight: bold;
   display: inline;
+  background-color: #000;
+  width: 100%;
 }
 
 div {

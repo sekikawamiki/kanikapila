@@ -40,3 +40,5 @@ gulp.task('sass', () => {
 gulp.task('watch', () => {
   return gulp.watch('./src/scss/*.scss', gulp.series('sass'))
 })
+
+gulp.task('default', gulp.series(gulp.parallel('watch')))
