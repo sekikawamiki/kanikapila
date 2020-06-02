@@ -15,11 +15,24 @@ const autoprefixerOption = {
 
 const postcssOption = [autoprefixer(autoprefixerOption)]
 
-// const imageminOption = [
-//   imageminPngquant({ quality: '65-80' }),
-//   imageminMozjpeg({ quality: '80' }),
-// ]
+const imageminOption = [
+  imageminPngquant({
+    quality: [.65, .8]
+  }),
+  imageminMozjpeg({
+    quality: [80]
+  })
+]
 
+//画像圧縮
+gulp.task('imagemin', () => {
+  return gulp
+  .src('./src/images/*')
+  .pipe(imagemin(imageminOption))
+  .pipe(gulp.dest('./dist/images'))
+})
+
+//sass
 gulp.task('sass', () => {
   return gulp.src('./src/scss/common.scss')
   .pipe(plumber())
@@ -32,7 +45,7 @@ gulp.task('sass', () => {
   .pipe(gulp.dest('./dist'))
 })
 
-
+//pug
 gulp.task('pug', () => {
   return gulp.src('./src/*.pug', '!./src/_*.pug')
   .pipe(pug({
@@ -41,18 +54,11 @@ gulp.task('pug', () => {
   .pipe(gulp.dest('./'))
 })
 
+//watchで監視
 gulp.task('watch', () => {
   gulp.watch('./src/scss/*.scss', gulp.series('sass'))
   gulp.watch('./src/*.pug', gulp.series('pug'))
 })
-
-// gulp.task('imagemin', () => {
-//   return gulp
-//   .src('./src/images/*')
-//   .pipe(imagemin(imageminOption))
-//   .pipe(gulp.dest('./dist/images'))
-// })
-
 
 
 gulp.task('default', gulp.series(gulp.parallel('watch')))
