@@ -1,0 +1,57 @@
+/* ----------------------------------------------------------------
+    base settings
+----------------------------------------------------------------- */
+html {
+    font-size: 62.5%;
+}
+  
+body {
+    color: #000;
+    word-wrap: break-word;
+    word-break: normal;
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-family: 游ゴシック体, YuGothic, 游ゴシック, "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    line-height: 1.57;
+
+    @include mq(md) {
+        font-size: 1.8rem;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+button, [type='button'],
+[type='reset'],
+[type='submit'] {
+    -webkit-appearance: button;
+}
+
+button {
+    &:focus {
+        outline: 0;
+    }
+}
+
+
+.nallow-none {
+    display: none;
+
+    @include mq {
+        display: block;
+    }
+}
+
+.wide-none {
+    @include mq {
+        display: none;
+    }
+}

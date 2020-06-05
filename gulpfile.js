@@ -34,7 +34,7 @@ gulp.task('imagemin', () => {
 
 //sass
 gulp.task('sass', () => {
-  return gulp.src('./src/scss/common.scss')
+  return gulp.src('./src/sass/master.scss')
   .pipe(plumber())
   .pipe(sass({
     outputStyle: 'expanded'
@@ -47,7 +47,7 @@ gulp.task('sass', () => {
 
 //pug
 gulp.task('pug', () => {
-  return gulp.src('./src/*.pug', '!./src/_*.pug')
+  return gulp.src('./src/**/*.pug', '!./src/**/_*.pug')
   .pipe(pug({
     pretty: true
   }))
@@ -56,8 +56,8 @@ gulp.task('pug', () => {
 
 //watchで監視
 gulp.task('watch', () => {
-  gulp.watch('./src/scss/*.scss', gulp.series('sass'))
-  gulp.watch('./src/*.pug', gulp.series('pug'))
+  gulp.watch('./src/sass/*.scss', gulp.series('sass'))
+  gulp.watch('./src/**/*.pug', gulp.series('pug'))
 })
 
 

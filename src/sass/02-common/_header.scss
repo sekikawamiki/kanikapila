@@ -1,0 +1,319 @@
+/* ----------------------------------------------------------------
+    header
+----------------------------------------------------------------- */
+.header {
+    background-color: #fff;
+
+    .top & {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        background-color: transparent;
+
+        &.active {
+            background-color: #fff;
+        }
+    }
+
+
+    > .inner {
+        margin: 0 auto;
+        padding: 20px 20px 17px;
+        position: relative;
+        max-width: 1113px;
+
+        @include mq {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 10px;
+        }
+    }
+}
+
+.header-logo {
+    margin-right: 30px;
+
+    @include mq {
+        margin-right: 50px;
+        flex: 1 0 280px;
+        max-width: 280px;
+    }
+
+    img {
+        width: 148px;
+
+        @include mq {
+            width: 280px;
+        }
+    }
+}
+.header-button {
+    position: absolute;
+    top: 25px;
+    right: 15px;
+    cursor: pointer;
+    width: 18px;
+    height: 14px;
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+
+    @include mq {
+        display: none;
+    }
+
+    &::before,
+    &::after {
+        @include pseudo;
+    }
+
+    > span,
+    &::before,
+    &::after {
+        color: transparent;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        width: 18px;
+        height: 1px;
+        background-color: #000;
+        transition: .2s;
+
+        .top & {
+            background-color: #fff;
+        }
+    }
+
+    &::before {
+        top:11px;
+    }
+
+    &::after {
+        bottom:11px;
+    }
+
+    &.active {
+        > span {
+            background-color: transparent;
+        }
+
+        &::before {
+            top: 0;
+            transform: rotate(45deg);
+            background-color: #000;
+        }
+
+        &::after {
+            bottom: 0;
+            transform: rotate(-45deg);
+            background-color: #000;
+        }
+    }
+}
+
+.global-navigation {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    left: 0;
+    z-index: 2;
+    background-color: #fff;
+    padding: 15px 20px 0;
+    @include mq {
+        position: static;
+        padding: 0;
+        flex: 1 1 auto;
+        display: flex;
+        background-color: transparent;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+.header-navigation {
+
+    @include mq {
+        flex: 1 1 620px;
+        max-width: 620px;
+    }
+
+    > ul {
+
+        @include mq {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        > li {
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
+            position: relative;
+
+            @include mq {
+                border: none;
+
+                &:first-child,
+                &:last-child {
+                    > a {
+                        padding-right: 0;
+                    }
+                }
+            }
+
+            > a {
+                display: block;
+                font-size: 1.6rem;
+                font-weight: bold;
+                color: #000;
+                text-decoration: none;
+                padding: 27px 20px 27px 0;
+                position: relative;
+
+                @include mq {
+                    padding: 0 15px 0 0;
+
+
+
+                    &::after {
+                        @include pseudo;
+                        position: absolute;
+                        bottom: -5px;
+                        left: 0;
+                        height: 4px;
+                        width: 100%;
+                        transition: .2s;
+                    }
+
+                    &:hover {
+                        &::after {
+                            background-color: $basecolor;
+                        }
+
+                    }
+
+                    .top & {
+                        color: #fff;
+                    }
+                }
+
+                > .panel-button {
+                    color: transparent;
+                    background-color: transparent;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    width: 7px;
+                    height: 7px;
+                    padding: 0;
+                    border: 1px solid #000;
+                    border-left: transparent;
+                    border-top: transparent;
+                    margin: auto;
+                    transform: rotate(45deg);
+                    transition: .2s;
+                    cursor: pointer;
+
+                    &.active {
+                        transform: rotate(-135deg);
+                        top: 0;
+                    }
+
+                    @include mq {
+                        width: 8px;
+                        height: 8px;
+                        top: -4px;
+
+                        .top & {
+                            border-color: #fff;
+                        }
+                    }
+                }
+            }
+             
+            .navpanel {
+                display: none;
+                margin-left: 15px;
+            
+                @include mq {
+                    position: absolute;
+                    left: 0;
+                    top: 25px;
+                }
+            
+                > .subnav {
+                    &:last-of-type {
+                        margin-bottom: 35px;
+                    }
+                    > li {
+                        margin-bottom: 15px;
+                
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                
+                        > a {
+                            text-decoration: none;
+                            color: #000;
+                        }
+                    }
+                }
+
+                .subnav-title {
+                    font-weight: bold;
+                    margin: 15px 0 20px;
+                }
+            }
+        }
+    }
+}
+
+.header-under-navigation {
+    margin-top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: -25px;
+
+    @include mq {
+        display: none;
+    }
+
+    > li {
+        margin-bottom: 15px;
+        margin-right: 25px;
+
+        > a {
+            color: #000;
+            text-decoration: none;
+        }
+    }
+}
+
+.header-phone {
+    display: none;
+
+    @include mq {
+        display: block;
+        margin-left: 10px;
+        flex: 0 0 auto;
+    }
+
+    > a {
+        @include mq {
+            display: block;
+            font-size: 1.2rem;
+            font-family: overpass-light;
+            background: url(/dist/images/icon-phone.svg) no-repeat left center;
+            text-decoration: none;
+            padding-left: 15px;
+            color: $basecolor;
+            pointer-events: none;
+        }
+    }
+}

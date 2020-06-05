@@ -1,0 +1,28 @@
+/* ----------------------------------------------------------------
+    mixins
+----------------------------------------------------------------- */
+
+@mixin mq($breakpoint: md) {
+    @if $breakpoint == xs {
+      @media screen and (min-width: $bp-sm) {
+        @content;
+      }
+    } @else if $breakpoint == md {
+      @media screen and (min-width: $bp-md) {
+        @content;
+      }
+    } @else if $breakpoint == lg {
+      @media screen and (min-width: $bp-lg) {
+        @content;
+      }
+    } @else if $breakpoint == xl {
+      @media screen and (min-width: $bp-xl) {
+          @content;
+      }
+    }
+  }
+
+@mixin pseudo {
+  content: '';
+  display: block;
+}
